@@ -7,7 +7,7 @@ databases:
   default:
     ENGINE: 'mongodb'
     DRIVER: 'motor'
-    NAME: 'tancho_db'
+    NAME: 'mongo'
     USER: 'tancho'
     PASSWORD: '4dm1n4dm1n'
     HOST: 'mongo'
