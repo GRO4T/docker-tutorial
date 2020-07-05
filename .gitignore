@@ -169,3 +169,4 @@ yarn-error.log
 # End of https://www.gitignore.io/api/vuejs,flask,python
 
 backend/config/config.yml
+

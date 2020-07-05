@@ -7,8 +7,6 @@ databases:
   default:
     ENGINE: 'mongodb'
     DRIVER: 'motor'
-    NAME: 'mongo'
-    USER: 'tancho'
-    PASSWORD: '4dm1n4dm1n'
-    HOST: 'mongo'
+    NAME: 'tancho_ci_db'
+    HOST: '127.0.0.1'
     PORT: '27017'

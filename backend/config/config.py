@@ -1,6 +1,8 @@
 # backend/tancho/config/config.yml
 
 from motor.motor_asyncio import AsyncIOMotorClient
+# from pymongo import MongoClient
+
 import yaml
 
 
@@ -44,6 +46,7 @@ def _get_client_config():
 
 
 DB_CLIENT = AsyncIOMotorClient(**_get_client_config())
+# DB_CLIENT = MongoClient(**_get_client_config(), connect=False)
 
 DB = DB_CLIENT[
     CONF.get("databases", {}).get("default", {}).get("NAME")
