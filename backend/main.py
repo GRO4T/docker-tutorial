@@ -2,9 +2,13 @@ from fastapi import FastAPI
 
 from core.routes import core_router
 from pets.routes import pets_router
+from vue.routes import vue_router
 from config import config
 
+from fastapi.staticfiles import StaticFiles
+
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 app.include_router(
@@ -17,6 +21,13 @@ app.include_router(
 app.include_router(
     core_router,
     tags=["core"],
+    responses={404: {"description": "Not found"}},
+)
+
+app.include_router(
+    vue_router,
+    prefix="/vue",
+    tags=["vue"],
     responses={404: {"description": "Not found"}},
 )
 

@@ -1,47 +1,39 @@
-# Rescaty
-The webapp resemble a social network where a user can follow a pet story and receive updates about.
+# Based on Docker, FastAPI, Vue.js tutorial
+https://medium.com/@bruno.fosados/simple-learn-docker-fastapi-and-vue-js-first-part-docker-setup-a8e4c09ef9c4
 
-please note: This is alive document of the goals, plans and lessons learned for this project.
+#### How to load database credentials from OS environment variables
+in docker-compose.yml
+```yaml
+environment:
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
+```
+then in the terminal
+```bash
+$ export MONGO_INITDB_ROOT_USERNAME="tancho_usuer"
+$ export MONGO_INITDB_ROOT_PASSWORD="4dm1n4dm1n"
+```
+#### How to attach to container's terminal
+tancho is the name of the Docker container
 
-## Objective
-Webapp where…
+```bash
+docker-compose exec tancho /bin/bash
+```
 
-- People can report a missing pet.
-- People can report a pet that needs rescue.
-- People can adopt a pet.
-- People can run a background check.
-- People can report bad actors or pet abuse.
-- People can get updates about pet stories.
+#### Running standalone MongoDB instance using docker
+to run
+```bash
+sudo docker run --name mongo -d -p 27017:27017 mongo
+```
+to remove all docker containers
+```bash
+sudo docker rm -f $(docker ps -a -q)
+sudo service docker restart
+```
+to check which containers are currently running
+```bash
+sudo docker ps
+```
 
-## Benefits for the community
-
-- Improve chances to find missing pets.
-- Centralize bad actors.
-- Improve pet adoption by automate and centralize tasks e.g. fill forms, take id pictures, etc.
-- Improve pet adoption and follow-up.
-- Avoid fraud on raising money for rescue pets.
-
-
-## Web App / Mobile Features
-
-- Timeline - Show recent stories updates of pets.
-
-- Report a missing pet - Upload pictures of your pet, add an emotional story to generate empathy  and fill a form with related information (to be defined).
-
-- Report a pet that needs rescue - Upload pictures, add the pet story to generate empathy and fill a form with related information (to be defined).
-
-- Report bad adotan or pet abuse - Upload pictures of the bad adoptan, add the story and fill a form with the related information (to be defined).
-
-- Reminders (Mobile only) - Send reminders to pet adoptan to update the pet story.
-
-- Angle of the day - Show an Angle and he/she story, people who stand up for some reason (reasons to be defined).
-
-- Story of the day - A pet that needs rescue for some reason (reasons to be defined).
-
-- Success stories - Show happy endings and histories on timeline.
-
-
-## Advance Features
-- Take pictures of pets and try to match to current reported missing pets (Artificial Intelligence).
-
-- Raise money to help `Angels` rescue and maintain rescued pets (Requirements to be defined).
+#### Project DNS name
+EC2Co-EcsEl-QPCLQGLIS95F-65532989.us-west-2.elb.amazonaws.com
